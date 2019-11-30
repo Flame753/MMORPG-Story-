@@ -70,3 +70,23 @@ class Magic:
 
     def get_wind_resistance(self):
         return self.wind_resistance
+
+    def __str__(self):
+        return "mana = {} \n" \
+               "fire_damage = {} \n" \
+               "water_damage = {} \n" \
+               "earth_damage = {} \n" \
+               "wind_damage = {} \n" \
+               "magic_resistance = {} \n" \
+               "fire_resistance = {} \n" \
+               "water_resistance = {} \n" \
+               "earth_resistance = {} \n" \
+               "wind_resistance = {}".format(self.mana, self.fire_damage, self.water_damage,
+                                        self.earth_damage, self.wind_damage, self.magic_resistance,
+                                        self.fire_resistance, self.water_resistance, self.earth_resistance,
+                                        self.wind_resistance)
+
+
+if __name__ == '__main__':
+    a = Magic()
+    print(a)
