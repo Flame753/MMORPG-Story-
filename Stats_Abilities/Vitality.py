@@ -21,3 +21,14 @@ class Vitality:
 
     def get_regeneration(self):
         return self.regeneration
+
+    def __str__(self):
+        return "Health = {} \n" \
+               "Wounds = {} \n" \
+               "Regeneration = {} ".format(self.health, self.wounds, self.regeneration)
+
+
+
+if __name__ == '__main__':
+    a = Vitality()
+    print(a)
