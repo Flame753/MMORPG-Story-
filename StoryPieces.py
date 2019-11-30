@@ -7,11 +7,13 @@ def valid_anw(string):
 
 
 def story_arc():
+    """Choices a random story arc"""
     arc = ["Forest", "Dungeon", "Town"]
     return random.choice(arc)
 
 
 def paths(arg):
+    """User choices a path direction"""
     switcher = {
         "right": "You turned right and you see a {} up a head.",
         "left": "You turned left and you see a {} up a head.",
