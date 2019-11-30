@@ -7,3 +7,11 @@ class Defense:
 
     def get_damage_resistance(self):
         return self.damage_resistance
+
+    def __str__(self):
+        return "damage_resistance = {} ".format(self.damage_resistance)
+
+
+if __name__ == '__main__':
+    a = Defense()
+    print(a)
