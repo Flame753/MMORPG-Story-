@@ -25,11 +25,17 @@ class Stats(Vitality, Magic, Defense, Agility, Strength):
     def get_vitality(self):
         return self.vitality
 
+    def add_vitality(self, vitality):
+        self.vitality += vitality
+
     def set_strength(self, strength):
         self.strength = strength
 
     def get_strength(self):
         return self.strength
+
+    def add_strength(self, strength):
+        self.strength += strength
 
     def set_defense(self, defense):
         self.defense = defense
@@ -37,17 +43,26 @@ class Stats(Vitality, Magic, Defense, Agility, Strength):
     def get_defense(self):
         return self.defense
 
+    def add_defense(self, defense):
+        self.defense += defense
+
     def set_magic(self, magic):
         self.magic = magic
 
     def get_magic(self):
         return self.magic
 
+    def add_magic(self, magic):
+        self.magic += magic
+
     def set_agility(self, agility):
         self.agility = agility
 
     def get_agility(self):
         return self.agility
+
+    def add_agility(self, agility):
+        self.agility += agility
 
     def get_stats(self):
         return {"vitality": self.vitality,

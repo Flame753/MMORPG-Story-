@@ -2,13 +2,13 @@ from Attributes.Stats import Stats
 
 
 class Character(Stats):
-    def __init__(self, vitality=0, strength=0, defense=0, magic=0, agility=0):
+    def __init__(self, vitality=10, strength=10, defense=10, magic=10, agility=10):
         super().__init__(vitality, strength, defense, magic, agility)
         self.level = 1
         self.exp = 0
 
-    def set_level(self, level):
-        self.level = level
+    def level_up(self):
+        self.level += 1
 
     def get_level(self):
         return self.level
@@ -20,9 +20,12 @@ class Character(Stats):
         return self.exp
 
 
+
+
+
 if __name__ == '__main__':
     # print(help(Character()))
-    char1 = Character(34, 34, 6, 2, 1)
+    char1 = Character()
     char1.add_exp(2)
     print(char1.get_exp())
     # print(char1.get_stats())
