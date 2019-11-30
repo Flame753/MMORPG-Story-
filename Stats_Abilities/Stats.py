@@ -5,8 +5,14 @@ from Stats_Abilities.Agility import Agility
 from Stats_Abilities.Strength import Strength
 
 
-class Stats:
+class Stats(Vitality, Magic, Defense, Agility, Strength):
     def __init__(self, vitality=0, strength=0, defense=0, magic=0, agility=0):
+        Vitality.__init__(self)
+        Magic.__init__(self)
+        Defense.__init__(self)
+        Agility.__init__(self)
+        Strength.__init__(self)
+
         self.vitality = vitality
         self.strength = strength
         self.defense = defense
@@ -59,6 +65,7 @@ class Stats:
 
 
 if __name__ == '__main__':
-    st1 = Stats(5,5,2,6)
-    print(Stats.get_stats(st1))
+    # st1 = Stats(5,5,2,6)
+    # print(Stats.get_stats(st1))
+    print(help(Stats))
 

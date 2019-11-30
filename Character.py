@@ -22,7 +22,7 @@ class Character(Stats):
 
 if __name__ == '__main__':
     # print(help(Character()))
-    char1 = Character(34,34,6,2,1)
-    print(char1.get_stats())
-    print(char1)
-    # print(help(Character))
+    # char1 = Character(34,34,6,2,1)
+    # print(char1.get_stats())
+    # print(char1)
+    print(help(Character))
