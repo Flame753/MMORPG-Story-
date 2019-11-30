@@ -7,12 +7,8 @@ def valid_anw(string):
 
 
 def story_arc():
-    switcher = {
-        1: "Forest",
-        2: "Dungeon",
-        3: "Town"
-    }
-    return switcher.get(random.randint(1, 3), "Problem has occurred check your code!")
+    arc = ["Forest", "Dungeon", "Town"]
+    return random.choice(arc)
 
 
 def paths(arg):
@@ -31,6 +27,3 @@ def actions(arg):
         "explore": "",
     }
     return switcher.get(arg, "Your unable to do that action.")
-
-
-
