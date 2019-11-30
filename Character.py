@@ -4,7 +4,7 @@ import Stats_Abilities
 
 class Character:
     def __init__(self):
-        self.stats = Stats_Abilities.Stats.get_all()
+        self.stats = Stats_Abilities.Stats
         self.level = 1
         self.exp = 0
 
@@ -30,5 +30,3 @@ class Character:
 if __name__ == '__main__':
     # print(help(Character()))
     char1 = Character()
-    print(char1.get_all())
-    print()

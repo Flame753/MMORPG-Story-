@@ -48,9 +48,7 @@ class Stats(Vitality, Strength, Defense, Magic, Agility):
     def get_agility(self):
         return self.agility
 
-    @classmethod
-    def get_all(cls):
-        return[cls.vitality, cls.strength, cls.defense, cls.magic, cls.agility]
+
 
 if __name__ == '__main__':
     # st1 = Stats()
