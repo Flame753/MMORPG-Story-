@@ -1,18 +1,11 @@
 from Stats_Abilities import Stats
-import Stats_Abilities
 
 
+starting_stats = Stats
 class Character:
     def __init__(self):
-        self.stats = Stats_Abilities.Stats
         self.level = 1
         self.exp = 0
-
-    def set_stats(self, stats):
-        self.stats = self.stats + stats
-
-    def get_stats(self):
-        return self.stats
 
     def set_level(self, level):
         self.level = level
@@ -30,3 +23,4 @@ class Character:
 if __name__ == '__main__':
     # print(help(Character()))
     char1 = Character()
+    print(Character)
