@@ -14,7 +14,7 @@ class Character(Stats):
         return self.level
 
     def add_exp(self, exp):
-        self.exp = self.exp + exp
+        self.exp += exp
 
     def get_exp(self):
         return self.exp
@@ -22,7 +22,9 @@ class Character(Stats):
 
 if __name__ == '__main__':
     # print(help(Character()))
-    # char1 = Character(34,34,6,2,1)
+    char1 = Character(34, 34, 6, 2, 1)
+    char1.add_exp(2)
+    print(char1.get_exp())
     # print(char1.get_stats())
-    # print(char1)
-    print(help(Character))
+    print(char1)
+
