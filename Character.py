@@ -1,4 +1,4 @@
-from Stats_Abilities.Stats import Stats
+from Attributes.Stats import Stats
 
 
 class Character(Stats):

@@ -1,8 +1,8 @@
-from Stats_Abilities.Vitality import Vitality
-from Stats_Abilities.Magic import Magic
-from Stats_Abilities.Defense import Defense
-from Stats_Abilities.Agility import Agility
-from Stats_Abilities.Strength import Strength
+from Attributes.Vitality import Vitality
+from Attributes.Magic import Magic
+from Attributes.Defense import Defense
+from Attributes.Agility import Agility
+from Attributes.Strength import Strength
 
 
 class Stats(Vitality, Magic, Defense, Agility, Strength):
