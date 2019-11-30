@@ -28,7 +28,6 @@ class Vitality:
                "Regeneration = {} ".format(self.health, self.wounds, self.regeneration)
 
 
-
 if __name__ == '__main__':
     a = Vitality()
     print(a)

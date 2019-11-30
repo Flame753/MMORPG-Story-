@@ -14,3 +14,12 @@ class Strength:
 
     def get_damage(self):
         return self.damage
+
+    def __str__(self):
+        return "miss_chance = {} \n" \
+               "damage = {} ".format(self.miss_chance, self.damage)
+
+
+if __name__ == '__main__':
+    a = Strength()
+    print(a)
