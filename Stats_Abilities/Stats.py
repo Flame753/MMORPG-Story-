@@ -50,8 +50,15 @@ class Stats:
                 "magic": self.magic,
                 "agility": self.agility}
 
+    def __str__(self):
+        return f"vitality = {self.vitality} \n" \
+               f"strength = {self.strength} \n" \
+               f"defense = {self.defense} \n" \
+               f"magic = {self.magic} \n" \
+               f"agility = {self.agility} "
+
 
 if __name__ == '__main__':
     st1 = Stats(5,5,2,6)
-    print(Stats)
+    print(Stats.get_stats(st1))
 

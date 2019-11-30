@@ -1,9 +1,9 @@
-from Stats_Abilities import Stats
+from Stats_Abilities.Stats import Stats
 
 
-starting_stats = Stats
-class Character:
-    def __init__(self):
+class Character(Stats):
+    def __init__(self, vitality=0, strength=0, defense=0, magic=0, agility=0):
+        super().__init__(vitality, strength, defense, magic, agility)
         self.level = 1
         self.exp = 0
 
@@ -22,5 +22,7 @@ class Character:
 
 if __name__ == '__main__':
     # print(help(Character()))
-    char1 = Character()
-    print(Character)
+    char1 = Character(34,34,6,2,1)
+    print(char1.get_stats())
+    print(char1)
+    # print(help(Character))
