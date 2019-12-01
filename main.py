@@ -1,12 +1,14 @@
 import math
 import random
+import character
 from StoryPieces import valid_anw, story_arc, paths, actions
 
 
 if __name__ == "__main__":
-
+    char = character.Character()
     arc = story_arc()
     answer = input("Would you like to start the game? (yes/no)")
+    char.name = input("What is user username?")
     if valid_anw(answer) == "yes":
         print("Your entering into a {}.".format(arc))
         print(f"Your are walking through this {arc} and see {3} paths to choose from.")
