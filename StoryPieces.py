@@ -19,7 +19,7 @@ def paths(arg):
         "left": "You turned left and you see a {} up a head.",
         "straight": "You went straight and you see a {} up a head."
     }
-    return switcher.get(arg, "Not a valid option")
+    return switcher.get(arg, "The path you choose just killed you. Game Over!")
 
 
 def actions(arg):
