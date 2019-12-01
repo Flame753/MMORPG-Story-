@@ -34,7 +34,7 @@ class Boar(Monsters):
         self.bab = 1
         self.damageDie = [1, 8, 'str']
         self.ability_scores = {'str': 17, 'dex': 10, 'con': 17, 'int': 2, 'wis': 13, 'cha': 4}
-        elf.hit_points = [2, 8, 9]
+        self.hit_points = [2, 8, 9]
 
 
 mons = Monsters()
