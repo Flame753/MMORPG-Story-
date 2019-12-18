@@ -69,10 +69,8 @@ class EnemyTile(MapTile):
         super().__init__(x, y)
 
     def intro_text(self):
-        if self.enemy.is_alive():
-            return "A {} awaits!".format(self.enemy.name)
-        else:
-            return "You've defeated the {}.".format(self.enemy.name)
+        text = self.alive_text if self.enemy.is_alive() else self.dead_text
+        return text
 
     def modify_player(self, player):
         if self.enemy.is_alive():
