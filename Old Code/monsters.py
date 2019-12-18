@@ -1,5 +1,4 @@
 import random
-import character
 
 
 class Monsters(object):

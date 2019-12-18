@@ -1,5 +1,3 @@
-import math
-import random
 import character
 from StoryPieces import valid_anw, story_arc, paths, actions
 
