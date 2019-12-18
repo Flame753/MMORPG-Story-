@@ -46,12 +46,25 @@ class EnemyTile(MapTile):
         r = random.random()
         if r < 0.50:
             self.enemy = enemies.GiantSpider()
+            self.alive_text = "A giant spider jumps down from " \
+                              "its web in front of you!"
+            self.dead_text = "The corpse of a dead spider " \
+                             "rots on the ground."
         elif r < 0.80:
             self.enemy = enemies.Ogre()
+            self.alive_text = "An ogre is blocking your path!"
+            self.dead_text = "A dead ogre reminds you of your triumph."
         elif r < 0.95:
             self.enemy = enemies.BatColony()
+            self.alive_text = "You hear a squeaking noise growing louder" \
+                              "...suddenly you are lost in a swarm of bats!"
+            self.dead_text = "Dozens of dead bats are scattered on the ground."
         else:
             self.enemy = enemies.RockMonster()
+            self.alive_text = "You've disturbed a rock monster " \
+                              "from his slumber!"
+            self.dead_text = "Defeated, the monster has reverted " \
+                             "into an ordinary rock."
 
         super().__init__(x, y)
 
@@ -82,5 +95,3 @@ def tile_at(x, y):
         return world_map[y][x]
     except IndexError:
         return None
-
-
