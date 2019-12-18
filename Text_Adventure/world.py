@@ -11,6 +11,9 @@ class MapTile:
     def intro_text(self):
         raise NotImplementedError("Create a subclass instead!")
 
+    def modify_player(self, player):
+        pass
+
 
 class StartTile(MapTile):
     def intro_text(self):
