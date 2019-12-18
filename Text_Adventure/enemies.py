@@ -8,11 +8,13 @@ class Enemy:
     def is_alive(self):
         return self.hp > 0
 
+
 class GiantSpider(Enemy):
     def __init__(self):
         self.name = "Giant Spider"
         self.hp = 10
         self.damage = 2
+
 
 class Ogre(Enemy):
     def __init__(self):
@@ -20,11 +22,13 @@ class Ogre(Enemy):
         self.hp = 30
         self.damage = 10
 
+
 class BatColony(Enemy):
     def __init__(self):
         self.name = "Colony of bats"
         self.hp = 100
         self.damage = 4
+
 
 class RockMoster(Enemy):
     def __init__(self):
