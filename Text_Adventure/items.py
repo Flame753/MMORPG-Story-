@@ -26,3 +26,23 @@ class RustySword(Weapon):
         self.name = "Rusty sword"
         self.description = "This sword is showing its age, " \
                            "but still has some fight in it."
+
+
+class Consumable:
+    def __init__(self):
+        raise NotImplementedError("Do not create raw Consumable objets.")
+
+    def __str__(self):
+        return "{} (+{} HP)".format(self.name, self.healing_value)
+
+
+class CrustyBread(Consumable):
+    def __init__(self):
+        self.name = "Crusty Bread"
+        self.healing_value = 10
+
+
+class HealthPotion(Consumable):
+    def __init__(self):
+        self.name = "Health Potion"
+        self.healing_value = 50

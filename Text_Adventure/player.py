@@ -7,7 +7,7 @@ class Player:
         self.inventory = [items.Rock(),
                           items.Dagger(),
                           'Gold(5)',
-                          'Crusty Bread']
+                          items.CrustyBread()]
         self.x = 1
         self.y = 2
         self.hp = 100
@@ -57,3 +57,24 @@ class Player:
             print("You killed {}!".format(enemy.name))
         else:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
+
+    def heal(self):
+        consumables = [item for item in self.inventory if isinstance (item, item.Consumable)]
+        if not consumables:
+            print("you don't have any items to heal you!")
+            return
+        for i, item in enumerate(consumables, 1):
+            print("Choose an item to use to heal: ")
+            print("{}. {}".format(i, item))
+
+        valid = False
+        while not valid:
+            choice = input("")
+            try:
+                to_eat = consumables[int(choice) -1]
+                self.hp = min(100, self.hp + to_eat.healing_value)
+                self.inventroy.remove(to_eat)
+                print("Current HP: {}".format(self.hp))
+                valid = True
+            except(ValueError, IndexError):
+                print("Invalid choice, try again.")

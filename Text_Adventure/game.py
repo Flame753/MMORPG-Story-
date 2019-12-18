@@ -22,6 +22,8 @@ def play():
             player.print_inventory()
         elif action_input in ['a', 'A']:
             player.attack()
+        elif action_input in ['h', 'H']:
+            player.heal()
         elif action_input in ['exit']:
             break
         else:
