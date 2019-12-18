@@ -58,6 +58,11 @@ class EnemyTile(MapTile):
         else:
             return "You've defeated the {}.".format(self.enemy.name)
 
+    def modify_player(self, player):
+        if self.enemy.is_alive():
+            player.hp = player.hp - self.enemy.damage
+            print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, player.hp))
+
 
 world_map = [
     [None, VictoryTile(1, 0), None],
@@ -74,3 +79,5 @@ def tile_at(x, y):
         return world_map[y][x]
     except IndexError:
         return None
+
+
