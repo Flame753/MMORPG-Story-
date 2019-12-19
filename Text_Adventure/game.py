@@ -5,6 +5,7 @@ from collections import OrderedDict
 
 def play():
     print("Escape from Cave Terror!")
+    world.parse_world_dsl()
     player = Player()
     while True:
         room = world.tile_at(player.x, player.y)
