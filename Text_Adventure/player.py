@@ -59,7 +59,7 @@ class Player:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
 
     def heal(self):
-        consumables = [item for item in self.inventory if isinstance (item, item.Consumable)]
+        consumables = [item for item in self.inventory if isinstance(item, items.Consumable)]
         if not consumables:
             print("you don't have any items to heal you!")
             return
@@ -73,7 +73,7 @@ class Player:
             try:
                 to_eat = consumables[int(choice) -1]
                 self.hp = min(100, self.hp + to_eat.healing_value)
-                self.inventroy.remove(to_eat)
+                self.inventory.remove(to_eat)
                 print("Current HP: {}".format(self.hp))
                 valid = True
             except(ValueError, IndexError):
