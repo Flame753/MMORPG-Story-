@@ -67,11 +67,17 @@ class Player:
             print("Choose an item to use to heal: ")
             print("{}. {}".format(i, item))
 
+        consumables.append("Cancel")  # adding Cancel
+        print("{}. {}".format(len(consumables), "Cancel"))  # Displaying Cancel
+
         valid = False
         while not valid:
             choice = input("")
             try:
-                to_eat = consumables[int(choice) -1]
+
+                to_eat = consumables[int(choice) - 1]
+                if to_eat == "Cancel":  # if player select Cancel
+                    break
                 self.hp = min(100, self.hp + to_eat.healing_value)
                 self.inventory.remove(to_eat)
                 print("Current HP: {}".format(self.hp))

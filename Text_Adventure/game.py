@@ -11,6 +11,7 @@ def play():
         print(room.intro_text())
         room.modify_player(player)
         choose_action(room, player)
+        print("-"*20)
 
 
 def get_available_action(room, player):
