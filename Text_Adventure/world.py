@@ -133,28 +133,46 @@ class TraderTile(MapTile):
         """
 
 
+class FindGoldTile(MapTile):
+    def __init__(self, x, y):
+        self.gold = random.randint(1, 50)
+        self.gold_claimed = False
+        super().__init__(x, y)
 
+    def modify_player(self, player):
+        if not self.gold_claimed:
+            self.gold_claimed = True
+            player.gold = player.gold + self.gold
+            print("+{} gold added.".format(self.gold))
 
-def tile_at(x, y):
-    if x < 0 or y < 0:
-        return None
-    try:
-        return world_map[y][x]
-    except IndexError:
-        return None
+    def intro_text(self):
+        if self.gold_claimed:
+            return """
+            Another unremarkable part of the cave. You
+            must forge onward.
+            """
+        else:
+            return """
+            Someone dropped some gold. You pick it up.
+            """
 
 
 world_dsl = """
-|  |VT|  |
-|  |EN|  |
-|EN|ST|EN|
-|  |EN|  |
+|EN|EN|VT|EN|EN|
+|EN|  |  |  |EN|
+|EN|FG|EN|  |TT|
+|TT|  |ST|FG|EN|
+|FG|  |EN|  |FG|
 """
 world_map = []
 tile_type_dict = {"VT": VictoryTile,
                   "EN": EnemyTile,
                   "ST": StartTile,
+                  "FG": FindGoldTile,
+                  "TT": TraderTile,
                   "  ": None}
+
+start_tile_location = None
 
 
 def is_dsl_valid(dsl):
@@ -198,6 +216,10 @@ def parse_world_dsl():
         for x, dsl_cell in enumerate(dsl_cells):
             # Look up the abbreviation in the dictionary
             tile_type = tile_type_dict[dsl_cell]
+            # Setting the players location
+            if tile_type == StartTile:
+                global start_tile_location
+                start_tile_location = x, y
             # If the dictionary returned a valid type, create
             # a new tile object, pass it the X-Y coordinates
             # as required by the tile __init__(), and add
@@ -208,5 +230,10 @@ def parse_world_dsl():
         world_map.append(row)
 
 
-#print(is_dsl_valid(world_dsl))
-print(parse_world_dsl())
+def tile_at(x, y):
+    if x < 0 or y < 0:
+        return None
+    try:
+        return world_map[y][x]
+    except IndexError:
+        return None

@@ -8,8 +8,8 @@ class Player:
                           items.Dagger(),
                           items.CrustyBread()]
 
-        self.x = 1  # world.start_tile_location[0]
-        self.y = 2  # world.start_tile_location[1]
+        self.x = world.start_tile_location[0]
+        self.y = world.start_tile_location[1]
         self.hp = 100
         self.gold = 5
 
