@@ -26,9 +26,6 @@ class StartTile(MapTile):
 
 
 class BoringTile(MapTile):
-    def modify_player(self, player):
-        player.victory = True
-
     def intro_text(self):
         return """
         This is a very boring part of the cave.
@@ -36,6 +33,9 @@ class BoringTile(MapTile):
 
 
 class VictoryTile(MapTile):
+    def modify_player(self, player):
+        player.victory = True
+
     def intro_text(self):
         return """
         You see a bright light in the distance...
