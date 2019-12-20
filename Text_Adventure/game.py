@@ -13,9 +13,9 @@ def play():
         room.modify_player(player)
         if player.is_alive() and not player.victory:
             choose_action(room, player)
+            print("-" * 20)
         elif not player.is_alive():
             print("Your journey has come to an early end!")
-        print("-"*20)
 
 
 def get_available_action(room, player):

@@ -11,7 +11,7 @@ class Rock(Weapon):
         self.name = "Rock"
         self.description = "A fist-sized rock, suitable for bludgeoning."
         self.damage = 5
-        self.value = 100
+        self.value = 1
 
 
 class Dagger(Weapon):

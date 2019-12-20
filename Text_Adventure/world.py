@@ -99,7 +99,7 @@ class TraderTile(MapTile):
                     choice = int(user_input)
                     to_swap = seller.inventory[choice - 1]
                     self.swap(seller, buyer, to_swap)
-                except ValueError:
+                except (ValueError, IndexError):
                     print("Invalid choice!")
 
     def swap(self, seller, buyer, item):
@@ -107,7 +107,7 @@ class TraderTile(MapTile):
             print("That's too expensive")
             return
         seller.inventory.remove(item)
-        buyer.inventory.remove(item)
+        buyer.inventory.append(item)
         seller.gold = seller.gold + item.value
         buyer.gold = buyer.gold - item.value
         print("Trade complete!")
@@ -119,6 +119,7 @@ class TraderTile(MapTile):
             if user_input in ['Q', 'q']:
                 return
             elif user_input in ['B', 'b']:
+                print("You have {} Gold to spend.".format(player.gold))
                 print("Here's whats available to buy: ")
                 self.trade(buyer=player, seller=self.trader)
             elif user_input in ['S', 's']:
@@ -130,9 +131,8 @@ class TraderTile(MapTile):
     def intro_text(self):
         return """
         A frail not-quite-human, not-quite-creature squats in
-        the corner
-        clinking his gold coins together. He looks willing to 
-        trade.
+        the corner clinking his gold coins together.
+        He looks willing to trade.
         """
 
 
