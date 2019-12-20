@@ -10,20 +10,19 @@ class Player:
 
         self.x = world.start_tile_location[0]
         self.y = world.start_tile_location[1]
-        self.hp = 100
+        self.maxHP = 100
+        self.currentHP = 100
         self.gold = 5
         self.victory = False
 
     def is_alive(self):
-        return self.hp > 0
+        return self.currentHP > 0
 
     def print_inventory(self):
         print("Inventory:")
         for item in self.inventory:
             print('* ' + str(item))
         print("Gold: {}".format(self.gold))
-        best_weapon = self.most_powerful_weapon()
-        print("your best weapon is your {}".format(best_weapon))
 
     def most_powerful_weapon(self):
         max_damage = 0
@@ -82,9 +81,9 @@ class Player:
                 if choice in ['Q', 'q']:  # A way to exit
                     return
                 to_eat = consumables[int(choice) - 1]
-                self.hp = min(100, self.hp + to_eat.healing_value)
+                self.currentHP = min(100, self.currentHP + to_eat.healing_value)
                 self.inventory.remove(to_eat)
-                print("Current HP: {}".format(self.hp))
+                print("Current HP: {}".format(self.currentHP))
                 valid = True
             except(ValueError, IndexError):
                 print("Invalid choice, try again.")
@@ -92,3 +91,9 @@ class Player:
     def trade(self):
         room = world.tile_at(self.x, self.y)
         room.check_if_trade(self)
+
+    def status(self):
+        best_weapon = self.most_powerful_weapon()
+        print("Your Stats: \nMax HP: {} \nCurrent HP: {}".format(self.maxHP, self.currentHP))
+        print("your best weapon is your {}".format(best_weapon))
+
