@@ -88,9 +88,9 @@ class TraderTile(MapTile):
         super().__init__(x, y)
 
     def trade(self, buyer, seller):
-        for i, item in enumerate(seller.inventory, 1):
-            print("{}. {} - {} Gold".format(i, item.name, item.value))
         while True:
+            for i, item in enumerate(seller.inventory, 1):
+                print("{}. {} - {} Gold".format(i, item.name, item.value))
             user_input = input("Choose an item or press Q to exit: ")
             if user_input in ['Q', 'q']:
                 return
