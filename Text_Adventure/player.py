@@ -6,16 +6,18 @@ class Player:
     def __init__(self):
         self.inventory = [items.Rock(),
                           items.Dagger(),
-                          'Gold(5)',
                           items.CrustyBread()]
-        self.x = 1
-        self.y = 2
+
+        self.x = 1  # world.start_tile_location[0]
+        self.y = 2  # world.start_tile_location[1]
         self.hp = 100
+        self.gold = 5
 
     def print_inventory(self):
         print("Inventory:")
         for item in self.inventory:
             print('* ' + str(item))
+        print("Gold: {}".format(self.gold))
         best_weapon = self.most_powerful_weapon()
         print("your best weapon is your {}".format(best_weapon))
 
@@ -84,3 +86,7 @@ class Player:
                 valid = True
             except(ValueError, IndexError):
                 print("Invalid choice, try again.")
+
+    def trade(self):
+        room = world.tile_at(self.x, self.y)
+        room.check_if_trade(self)
