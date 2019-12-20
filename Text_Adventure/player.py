@@ -75,7 +75,7 @@ class Player:
         while not valid:
             choice = input("")
             try:
-                if choice in ['Q', 'q']:
+                if choice in ['Q', 'q']:  # A way to exit
                     return
                 to_eat = consumables[int(choice) - 1]
                 self.hp = min(100, self.hp + to_eat.healing_value)
