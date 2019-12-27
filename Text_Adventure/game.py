@@ -14,7 +14,7 @@ def play():
         room.modify_mana(player)
         if player.is_alive() and not player.victory:
             choose_action(room, player)
-            print("-" * 20)
+            dashline()  # makes dash lines on the screen
         elif not player.is_alive():
             print("Your journey has come to an early end!")
 
@@ -62,6 +62,11 @@ def choose_action(room, player):
             action()
         else:
             print("Invalid action!")
+            dashline()
+
+
+def dashline():  # makes dash lines on the screen
+    print("-"*20)
 
 
 play()
