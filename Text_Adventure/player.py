@@ -1,5 +1,6 @@
 import items
 import world
+import spells
 
 
 class Player:
@@ -7,11 +8,15 @@ class Player:
         self.inventory = [items.Rock(),
                           items.Dagger(),
                           items.CrustyBread()]
+        self.spell = [spells.FireBall(),
+                      spells.IceBeam()]
 
         self.x = world.start_tile_location[0]
         self.y = world.start_tile_location[1]
         self.maxHP = 100
         self.currentHP = 100
+        self.maxmana = 100
+        self.mana = 100
         self.gold = 5
         self.victory = False
 
@@ -63,6 +68,41 @@ class Player:
         else:
             print("{} HP is {}.".format(enemy.name, enemy.hp))
 
+    def spell_attack(self):
+        if self.maxmana == self.mana:
+            print("You feel like you can cast infinite amount of spells.")
+        elif self.mana >= self.maxmana/2:
+            print("You feel like you have about half of your mana left.")
+        else:
+            print("You feel like your are about out of mana.")
+
+        for i, type in enumerate(self.spell, 1):
+            print("{}: {}".format(i, type.name))
+
+        valid = False
+        while not valid:
+            choice = input("")
+            try:
+                chosen_spell = self.spell[int(choice) - 1]  # gets the spell out of the spell known
+
+                if self.mana > chosen_spell.mana:
+                    self.mana -= chosen_spell.mana
+                    room = world.tile_at(self.x, self.y)
+                    enemy = room.enemy
+                    print(chosen_spell.description)
+                    enemy.hp -= chosen_spell.damage
+                    if not enemy.is_alive():
+                        print("You killed {}!".format(enemy.name))
+                    else:
+                        print("{} HP is {}.".format(enemy.name, enemy.hp))
+                    valid = True
+                else:
+                    print("You don't have enough mana to cast {}".format(chosen_spell.name))
+                    return
+
+            except (ValueError, IndexError):
+                print("Invalid choice, try again.")
+
     def heal(self):
         consumables = [item for item in self.inventory if isinstance(item, items.Consumable)]
         if not consumables:
@@ -95,5 +135,6 @@ class Player:
     def status(self):
         best_weapon = self.most_powerful_weapon()
         print("Your Stats: \nMax HP: {} \nCurrent HP: {}".format(self.maxHP, self.currentHP))
+        print("Max Mana: {} \nCurrent Mana: {}".format(self.maxmana, self.mana))
         print("your best weapon is your {}".format(best_weapon))
 
