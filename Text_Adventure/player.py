@@ -108,8 +108,9 @@ class Player:
         if not consumables:
             print("you don't have any items to heal you!")
             return
+
+        print("Choose an item to use to heal: ")
         for i, item in enumerate(consumables, 1):
-            print("Choose an item to use to heal: ")
             print("{}. {}".format(i, item))
 
         print("Enter Q to exit. ")  # Displaying Cancel
