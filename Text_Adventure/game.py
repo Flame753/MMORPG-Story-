@@ -11,6 +11,7 @@ def play():
         room = world.tile_at(player.x, player.y)
         print(room.intro_text())
         room.modify_player(player)
+        room.modify_mana(player)
         if player.is_alive() and not player.victory:
             choose_action(room, player)
             print("-" * 20)

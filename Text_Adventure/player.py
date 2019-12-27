@@ -121,7 +121,7 @@ class Player:
                 if choice in ['Q', 'q']:  # A way to exit
                     return
                 to_eat = consumables[int(choice) - 1]
-                self.currentHP = min(100, self.currentHP + to_eat.healing_value)
+                self.currentHP = min(self.maxHP, self.currentHP + to_eat.healing_value)
                 self.inventory.remove(to_eat)
                 print("Current HP: {}".format(self.currentHP))
                 valid = True

@@ -15,6 +15,32 @@ class MapTile:
     def modify_player(self, player):
         pass
 
+    def modify_mana(self, player):
+        pass
+
+
+class ManaTile(MapTile):
+    def __init__(self, x, y):
+        self.mana = random.randint(10, 50)
+        self.mana_claimed = False
+        super().__init__(x, y)
+
+    def modify_mana(self, player):
+        if not self.mana_claimed:
+            self.mana_claimed = True
+            player.mana = min(player.maxmana, self.mana + player.mana)
+
+    def intro_text(self):
+        if self.mana_claimed:
+            return """
+            Another unremarkable part of the cave. You
+            must forge onward.
+            """
+        else:
+            return """
+            You feel a rush of moana surging through you.
+            """
+
 
 class StartTile(MapTile):
     def intro_text(self):
@@ -45,8 +71,9 @@ class VictoryTile(MapTile):
         """
 
 
-class EnemyTile(MapTile):
+class EnemyTile(ManaTile):
     def __init__(self, x, y):
+        self.mana = random.randint(0, 5)
         r = random.random()
         if r < 0.50:
             self.enemy = enemies.GiantSpider()
@@ -136,10 +163,11 @@ class TraderTile(MapTile):
         """
 
 
-class FindGoldTile(MapTile):
+class FindGoldTile(ManaTile):
     def __init__(self, x, y):
         self.gold = random.randint(1, 50)
         self.gold_claimed = False
+        self.mana = random.randint(0, 10)
         super().__init__(x, y)
 
     def modify_player(self, player):
