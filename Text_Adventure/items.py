@@ -24,7 +24,7 @@ class Dagger(Weapon):
 
 
 class RustySword(Weapon):
-    def __str__(self):
+    def __init__(self):
         self.name = "Rusty sword"
         self.description = "This sword is showing its age, " \
                            "but still has some fight in it."

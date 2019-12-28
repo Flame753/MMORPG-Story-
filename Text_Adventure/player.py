@@ -139,3 +139,20 @@ class Player:
         print("Max Mana: {} \nCurrent Mana: {}".format(self.maxmana, self.mana))
         print("your best weapon is your {}".format(best_weapon))
 
+    def investigate(self):
+        room = world.tile_at(self.x, self.y)
+        enemy = room.enemy
+        print("Your looking over a {},".format(enemy.name))
+        try:
+            if not enemy.inventory:
+                print("And found nothing.")
+            else:
+                for i in range(len(enemy.inventory)):
+                    item = enemy.inventory.pop()
+                    print("Found a {}".format(item))
+                    self.inventory.append(item)
+        except AttributeError:
+            print("This {} has nothing on it.".format(enemy.name))
+
+
+

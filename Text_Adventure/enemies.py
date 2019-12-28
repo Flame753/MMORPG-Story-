@@ -1,3 +1,6 @@
+import items
+
+
 class Enemy:
     def __init__(self):
         raise NotImplementedError("Do not create raw Enemy objects.")
@@ -21,6 +24,7 @@ class Ogre(Enemy):
         self.name = "Ogre"
         self.hp = 30
         self.damage = 10
+        self.inventory = [items.RustySword(), items.CrustyBread()]
 
 
 class BatColony(Enemy):
@@ -35,3 +39,4 @@ class RockMonster(Enemy):
         self.name = "Rock Monster"
         self.hp = 80
         self.damage = 15
+        self.inventory = [items.Rock()]
