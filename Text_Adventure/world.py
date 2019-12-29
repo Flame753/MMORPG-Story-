@@ -105,7 +105,11 @@ class EnemyTile(ManaTile):
 
     def modify_player(self, player):
         if self.enemy.is_alive():
-            player.currentHP = player.currentHP - self.enemy.damage
+            try:
+                true_damage = self.enemy.damage - (self.enemy.damage * player.most_protective_armor().protection)
+            except AttributeError:
+                true_damage = self.enemy.damage
+            player.currentHP = player.currentHP - true_damage
             print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, player.currentHP))
 
 

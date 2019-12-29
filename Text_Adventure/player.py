@@ -10,6 +10,7 @@ class Player:
                           items.CrustyBread()]
         self.spell = [spells.FireBall(),
                       spells.IceBeam()]
+        self.wearing = []
 
         self.x = world.start_tile_location[0]
         self.y = world.start_tile_location[1]
@@ -40,6 +41,18 @@ class Player:
             except AttributeError:
                 pass
         return best_weapon
+
+    def most_protective_armor(self):
+        max_protection = 0
+        best_armor = None
+        for item in self.inventory:
+            try:
+                if item.protection > max_protection:
+                    best_armor = item
+                    max_protection = item.protection
+            except AttributeError:
+                pass
+        return best_armor
 
     def move(self, dx, dy):
         self.x += dx
@@ -153,6 +166,5 @@ class Player:
                     self.inventory.append(item)
         except AttributeError:
             print("This {} has nothing on it.".format(enemy.name))
-
 
 

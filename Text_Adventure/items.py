@@ -34,7 +34,7 @@ class RustySword(Weapon):
 
 class Consumable:
     def __init__(self):
-        raise NotImplementedError("Do not create raw Consumable objets.")
+        raise NotImplementedError("Do not create raw Consumable objects.")
 
     def __str__(self):
         return "{} (+{} HP)".format(self.name, self.healing_value)
@@ -52,3 +52,20 @@ class HealingPotion(Consumable):
         self.name = "Health Potion"
         self.healing_value = 50
         self.value = 60
+
+
+class Armor:
+    def __init__(self):
+        raise NotImplementedError("Do not create raw Armor objects.")
+
+    def __str__(self):
+        return self.name
+
+
+class LeatherArmor(Armor):
+    def __init__(self):
+        self.name = "Leather Armor"
+        self.description = "This leather is showing its age, " \
+                           "but still has some hits it's can take."
+        self.protection = .1
+        self.value = 75

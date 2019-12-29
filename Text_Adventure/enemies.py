@@ -24,7 +24,7 @@ class Ogre(Enemy):
         self.name = "Ogre"
         self.hp = 30
         self.damage = 10
-        self.inventory = [items.RustySword(), items.CrustyBread()]
+        self.inventory = [items.RustySword(), items.LeatherArmor(), items.CrustyBread()]
 
 
 class BatColony(Enemy):
