@@ -18,3 +18,10 @@ class Trader(NonPlayableCharacter):
                           items.CrustyBread(),
                           items.HealingPotion(),
                           items.HealingPotion()]
+
+
+class Blacksmith(NonPlayableCharacter):
+    def __init__(self):
+        self.name = "Blacksmith"
+        self.gold = 200
+        self.inventory = [items.IronSword(), items.LeatherArmor()]

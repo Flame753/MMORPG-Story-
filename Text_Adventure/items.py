@@ -25,11 +25,20 @@ class Dagger(Weapon):
 
 class RustySword(Weapon):
     def __init__(self):
-        self.name = "Rusty sword"
+        self.name = "Rusty Sword"
         self.description = "This sword is showing its age, " \
                            "but still has some fight in it."
         self.damage = 25
         self.value = 100
+
+
+class IronSword(Weapon):
+    def __init__(self):
+        self.name = "Iron Sword"
+        self.description = "This sword is very sharpe, and" \
+                           "forged with the finest iron that money can buy."
+        self.damage = 40
+        self.value = 150
 
 
 class Consumable:

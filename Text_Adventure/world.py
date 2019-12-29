@@ -21,9 +21,10 @@ class MapTile:
 
 class ManaTile(MapTile):
     def __init__(self, x, y):
+        super().__init__(x, y)
         self.mana = random.randint(10, 50)
         self.mana_claimed = False
-        super().__init__(x, y)
+
 
     def modify_mana(self, player):
         if not self.mana_claimed:
@@ -73,6 +74,7 @@ class VictoryTile(MapTile):
 
 class EnemyTile(ManaTile):
     def __init__(self, x, y):
+        super().__init__(x, y)
         self.mana = random.randint(0, 5)
         r = random.random()
         if r < 0.50:
@@ -97,7 +99,6 @@ class EnemyTile(ManaTile):
             self.dead_text = "Defeated, the monster has reverted " \
                              "into an ordinary rock."
 
-        super().__init__(x, y)
 
     def intro_text(self):
         text = self.alive_text if self.enemy.is_alive() else self.dead_text
@@ -115,8 +116,8 @@ class EnemyTile(ManaTile):
 
 class TraderTile(MapTile):
     def __init__(self, x, y):
-        self.trader = npc.Trader()
         super().__init__(x, y)
+        self.trader = npc.Trader()
 
     def trade(self, buyer, seller):
         while True:
@@ -167,12 +168,25 @@ class TraderTile(MapTile):
         """
 
 
+class BlacksmithTile(TraderTile):
+    def __init__(self, x, y):
+        super().__init__(x, y)
+        self.trader = npc.Blacksmith()
+
+    def intro_text(self):
+        return """
+        You hear sounds of a forge. 
+        You turn the corner and see a short man by the forge. 
+        He says 'What would you like from me?'.
+        """
+
+
 class FindGoldTile(ManaTile):
     def __init__(self, x, y):
+        super().__init__(x, y)
         self.gold = random.randint(1, 50)
         self.gold_claimed = False
         self.mana = random.randint(0, 10)
-        super().__init__(x, y)
 
     def modify_player(self, player):
         if not self.gold_claimed:
@@ -196,7 +210,7 @@ world_dsl = """
 |EN|EN|VT|EN|EN|
 |EN|  |  |  |EN|
 |EN|FG|EN|  |TT|
-|TT|  |ST|FG|EN|
+|BS|  |ST|FG|EN|
 |FG|  |EN|  |FG|
 """
 world_map = []
@@ -205,6 +219,7 @@ tile_type_dict = {"VT": VictoryTile,
                   "ST": StartTile,
                   "FG": FindGoldTile,
                   "TT": TraderTile,
+                  "BS": BlacksmithTile,
                   "  ": None}
 
 start_tile_location = None
