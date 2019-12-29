@@ -72,10 +72,10 @@ class Player:
         self.move(dx=-1, dy=0)
 
     def attack(self):
+        room = world.tile_at(self.x, self.y)
+        enemy = room.enemy
         try:
             best_weapon = self.most_powerful_weapon()
-            room = world.tile_at(self.x, self.y)
-            enemy = room.enemy
             print("You use {} against {}!".format(best_weapon.name, enemy.name))
             enemy.hp -= best_weapon.damage
         except AttributeError:
