@@ -18,6 +18,7 @@ class Player:
         self.currentHP = 100
         self.maxmana = 100
         self.mana = 100
+        self.strength = 1
         self.gold = 5
         self.victory = False
 
@@ -71,11 +72,15 @@ class Player:
         self.move(dx=-1, dy=0)
 
     def attack(self):
-        best_weapon = self.most_powerful_weapon()
-        room = world.tile_at(self.x, self.y)
-        enemy = room.enemy
-        print("You use {} against {}!".format(best_weapon.name, enemy.name))
-        enemy.hp -= best_weapon.damage
+        try:
+            best_weapon = self.most_powerful_weapon()
+            room = world.tile_at(self.x, self.y)
+            enemy = room.enemy
+            print("You use {} against {}!".format(best_weapon.name, enemy.name))
+            enemy.hp -= best_weapon.damage
+        except AttributeError:
+            print("You use Fist against {}!".format(enemy.name))
+            enemy.hp -= 1
         if not enemy.is_alive():
             print("You killed {}!".format(enemy.name))
         else:
